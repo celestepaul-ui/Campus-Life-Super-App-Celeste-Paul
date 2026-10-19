@@ -17,6 +17,8 @@ async function getWeather() {
     // return images;
 }
 
+const options = { year: 'numeric', month: 'long', day: 'numeric' };
+document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', options);
 // getWeather()
 
 // let giphyContainer = document.querySelector("#gif-container");
