@@ -5,9 +5,13 @@
 let endpoint = "https://my.meteoblue.com/images/meteogram_14day?lat=35.2621&lon=-81.1873&asl=245&tz=America%2FNew_York&apikey=kInEuy5XoQvYJSde&format=png&dpi=72&lang=en&temperature_units=F&precipitation_units=inch&windspeed_units=mph&location_name=Gastonia"
 
 async function getWeather() {
-    const response = await fetch(endpoint);
-    const data = await response;
-    const imageObjectURL = URL.createObjectURL(data.blob);
+        const response = await fetch(endpoint);
+        // 1. Extract the raw binary image data as a Blob object
+        const imageBlob = await response.blob(); 
+        // 2. Create the temporary browser URL pointing to that Blob
+        const imageObjectURL = URL.createObjectURL(imageBlob);
+        document.getElementById("weather-image").src = imageObjectURL;
+        console.log(imageObjectURL);
     // console.log(imageObjectURL);
     // let images = data.data;
     // return images;
@@ -18,16 +22,16 @@ async function getWeather() {
 // let giphyContainer = document.querySelector("#gif-container");
 // let button = document.querySelector("#fetch-gif-btn");
 
-button.addEventListener("click", async function () {
-    // let images = await getGiphys();
-    // console.log(images);
+// button.addEventListener("click", async function () {
+//     // let images = await getGiphys();
+//     // console.log(images);
 
-    // giphyContainer.innerHTML = "";
-    // // loop through images array
-    // images.forEach(function (gif) {
-    //     giphyContainer.innerHTML += `<img src="${gif.images.fixed_height.url}" class="col-3 mb-3"/>`;
-    // });
-});
+//     // giphyContainer.innerHTML = "";
+//     // // loop through images array
+//     // images.forEach(function (gif) {
+//     //     giphyContainer.innerHTML += `<img src="${gif.images.fixed_height.url}" class="col-3 mb-3"/>`;
+//     // });
+// });
 
 
 
