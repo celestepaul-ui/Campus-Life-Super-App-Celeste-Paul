@@ -21,79 +21,24 @@ const options = { year: 'numeric', month: 'long', day: 'numeric' };
 document.getElementById('current-date').textContent = new Date().toLocaleDateString('en-US', options);
 // getWeather()
 
-// let giphyContainer = document.querySelector("#gif-container");
-// let button = document.querySelector("#fetch-gif-btn");
+const API_KEY = '58213696-9cf5edc2b61fe2008f50129f0';
+const query = encodeURIComponent('chicken tenders and fries');
+const url = `https://pixabay.com/api/?key=${API_KEY}&q=${query}&image_type=photo&per_page=3`;
 
-// button.addEventListener("click", async function () {
-//     // let images = await getGiphys();
-//     // console.log(images);
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    if (data.hits && data.hits.length > 0) {
+      // Grabs only the very first image object from the results array
+      const singleImage = data.hits[0];
+      document.getElementById("dining-image").src = singleImage.webformatURL;
 
-//     // giphyContainer.innerHTML = "";
-//     // // loop through images array
-//     // images.forEach(function (gif) {
-//     //     giphyContainer.innerHTML += `<img src="${gif.images.fixed_height.url}" class="col-3 mb-3"/>`;
-//     // });
-// });
+      console.log("Image URL:", singleImage.webformatURL); 
+      console.log("Author:", singleImage.user);
+    } else {
+      console.log("No images found.");
+    }
+  })
+  .catch(error => console.error("Error fetching data:", error));
 
-
-
-
-// {
-//     "request": {
-//         "type": "City",
-//         "query": "North Belmont, United States of America",
-//         "language": "en",
-//         "unit": "m"
-//     },
-//     "location": {
-//         "name": "North Belmont",
-//         "country": "United States of America",
-//         "region": "North Carolina",
-//         "lat": "35.272",
-//         "lon": "-81.048",
-//         "timezone_id": "America/New_York",
-//         "localtime": "2026-10-14 18:36",
-//         "localtime_epoch": 1792002960,
-//         "utc_offset": "-4.0"
-//     },
-//     "current": {
-//         "observation_time": "10:36 PM",
-//         "temperature": 27,
-//         "weather_code": 113,
-//         "weather_icons": [
-//             "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0001_sunny.png"
-//         ],
-//         "weather_descriptions": [
-//             "Sunny"
-//         ],
-//         "astro": {
-//             "sunrise": "07:30 AM",
-//             "sunset": "06:50 PM",
-//             "moonrise": "11:34 AM",
-//             "moonset": "09:04 PM",
-//             "moon_phase": "Waxing Crescent",
-//             "moon_illumination": 11
-//         },
-//         "air_quality": {
-//             "co": "223",
-//             "no2": "6.2",
-//             "o3": "105",
-//             "so2": "1",
-//             "pm2_5": "6.6",
-//             "pm10": "6.7",
-//             "us-epa-index": "1",
-//             "gb-defra-index": "1"
-//         },
-//         "wind_speed": 6,
-//         "wind_degree": 248,
-//         "wind_dir": "WSW",
-//         "pressure": 1016,
-//         "precip": 0,
-//         "humidity": 55,
-//         "cloudcover": 2,
-//         "feelslike": 27,
-//         "uv_index": 0,
-//         "visibility": 10,
-//         "is_day": "yes"
-//     }
-// }
+fetch(url);

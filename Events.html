@@ -9,26 +9,77 @@
     integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
   <link rel="stylesheet" href="./css/style.css">
 </head>
-<header>
-  <!--add 3 buttons for Home, Events, and Dining, highlighting the current page as Red-->
-  <div class="d-flex justify-content-center">
-    <a class="btn btn-secondary" href="index.html">Home</a>
-    <a class="btn btn-danger" href="Events.html">Events</a>
-    <a class="btn btn-secondary" href="Dining.html">Dining</a>
-  </div>
-</header>
 
-<body class="bg-light">
-  <h1 class="h1 text-center">Belmont Abbey College</h1>
+<body class="d-flex flex-column min-vh-100">
+  <header>
+    <!--add 3 buttons for Home, Events, and Dining, highlighting the current page as Red-->
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-secondary m-2" href="index.html">Home</a>
+      <a class="btn btn-danger m-2" href="Events.html">Events</a>
+      <a class="btn btn-secondary m-2" href="Dining.html">Dining</a>
+    </div>
+  </header>
 
-  <!--Add events calendar-->
+  <main class="bg-light">
+    <h1 class="mt-5 text-center">Events Calendar</h1>
+
+    <div class="container mt-2">
+
+      <!-- table-responsive enables horizontal swipe scrolling on mobile layouts -->
+      <!--Add events calendar-->
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover align-middle">
+          <thead class="table-dark">
+            <tr>
+              <th scope="col">Date</th>
+              <th scope="col">Event</th>
+              <th scope="col">Location</th>
+              <th scope="col">Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>2026-10-20</td>
+              <td>Career Fair</td>
+              <td>Outside the Cafeteria</td>
+              <td>10am-2:30pm</td>
+            </tr>
+            <tr>
+              <td>2026-10-21</td>
+              <td>Mira Via Club</td>
+              <td>The Mezz</td>
+              <td>5pm-6:30pm</td>
+            </tr>
+            <tr>
+              <td>2026-10-23</td>
+              <td>BBQ and Games</td>
+              <td>The Quad</td>
+              <td>6pm-9:30pm</td>
+            </tr>
+            <tr>
+              <td>2026-10-27</td>
+              <td>Girls Club</td>
+              <td>The Hub</td>
+              <td>6:30pm-7:30pm</td>
+            </tr>
+            <tr>
+              <td>2026-10-28</td>
+              <td>Mass</td>
+              <td>The Basilica</td>
+              <td>10am-10:50am</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+  <!--Add footer with today's date-->
+  <footer class="bg-light d-flex py-3 mt-auto border-top">
+    <div>
+      <p class="mb-0">Today's Date: <span id="current-date"></span></p>
+    </div>
+  </footer>
 </body>
-<!--Add footer with today's date-->
-<footer class="bg-light d-flex py-3 mt-5">
-  <div>
-    <p class="mb-0">Today's Date: <span id="current-date"></span></p>
-  </div>
-</footer>
 <script src="./js/script.js"></script>
 
 </html>
